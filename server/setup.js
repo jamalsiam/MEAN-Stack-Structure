@@ -4,22 +4,22 @@ const bodyParser = require('body-parser');
 var session = require('express-session');
 var url=require('url');
 const mongoose = require('mongoose');
-var handlers = require('./handlers/handlers');
+var handlers = require('./handlers');
 
 
 //middleware
-//app.use(express.static(__dirname + '/../client/dist'));
+app.use(express.static(__dirname + '/../client/dist'));
 app.use('/', express.static(__dirname + './dist'));
 app.use(bodyParser.json({limit: '2mb'}));
 app.use(bodyParser.urlencoded({limit: '2mb', extended: true}));
 
-app.all('*',function (req,res,next) {
-    var route= req.originalUrl.split('/');
-    if(route[1]!=='api'){
-        app.use(req.originalUrl, express.static(__dirname + '/../client/dist'));
-    }
-    next();
-});
+// app.all('*',function (req,res,next) {
+//     var route= req.originalUrl.split('/');
+//     if(route[1]!=='api'){
+//         app.use(req.originalUrl, express.static(__dirname + '/../client/dist'));
+//     }
+//     next();
+// });
 
 
 // Connect to Mongoose

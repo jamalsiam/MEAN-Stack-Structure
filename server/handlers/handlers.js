@@ -1,12 +1,14 @@
 
-module.exports.handelUser = {
+module.exports = {
 
     getData: function(req, res) {
 
     },
     postData:function(req, res) {
         console.log(req.body)
-        res.json('ss')
+        
+        res.json('ss');
+         
     }
 };
 
